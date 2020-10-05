@@ -13,7 +13,7 @@ class SquareMatrix
 	   SquareMatrix(SquareMatrix<T> && rhs);   // Move constructor
 	   SquareMatrix & operator= (const SquareMatrix<T> & rhs);  // Copy assignment
 	   SquareMatrix & operator= (SquareMatrix<T> && rhs);   // Move assignment
-	   bool operator==(const SquareMatrix& rhs)const; // Matrices A and B are considered equal if their sizes are equal and all elements of A match the corresponding elements of B.
+	   bool operator==(const SquareMatrix<T>& rhs)const; // Matrices A and B are considered equal if their sizes are equal and all elements of A match the corresponding elements of B.
 	   SquareMatrix operator+ (const SquareMatrix& rhs)const; //The result of addition of two square matrices A and B
 	   void resize(int new_size);  // Restroys all previous content of the matrix and releases all memory. Then it allocates new memory. New elements are not specified (can have any value)
 	   const T& at(int row, int column) const;  // Returns a reference to the element in the given row and column
@@ -122,7 +122,7 @@ bool SquareMatrix<T> ::operator==(const SquareMatrix<T>& rhs)
 
 /**@return third SquareMatrix which is the sum of SquareMatrix A and SquareMatrix B**/
 template<class T>
-SquareMatrix<T> SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs)
+SquareMatrix SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs)
 {
 	SquareMatrix<T> result(*this);
 	if(operator==(const SquareMatrix<T>& rhs)
