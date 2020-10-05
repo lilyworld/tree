@@ -83,7 +83,7 @@ SquareMatrix<T>& SquareMatrix<T>::operator=(const SquareMatrix<T>& rhs)
 	} **/
 	if(this != &rhs)
 	{	
-		SquareMatirx copy = rhs;
+		SquareMatrix copy = rhs;
 		swap(*this, copy);
 	}
 	return *this;
@@ -121,7 +121,7 @@ bool SquareMatrix<T> ::operator==(const SquareMatrix<T>& rhs)
 }
 
 /**@return third SquareMatrix which is the sum of SquareMatrix A and SquareMatrix B**/
-Template<class T>
+template<class T>
 SquareMatrix<T> SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs)
 {
 	SquareMatrix<T> result(*this);
