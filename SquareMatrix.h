@@ -21,7 +21,7 @@ class SquareMatrix
 	   
      private:
 	   int size_;
-	   T* array_;
+	   T** array_;
 };
 
 /** Default Constructor**/
@@ -50,12 +50,6 @@ SquareMatrix<T>::SquareMatrix(const SquareMatrix<T>& rhs)
 template<class T>
 SquareMatrix<T>::SquareMatrix(SquareMatrix<T>&& rhs) : array_{rhs.array_}
 {
-	/**Initialize the new *this
-	size_ = 0;
-	array_ = nullptr;
-
-	// Shallow copy of other
-	*this = std::move(other); **/
 	rhs.array_ = nullptr;
 }
 
@@ -63,30 +57,22 @@ SquareMatrix<T>::SquareMatrix(SquareMatrix<T>&& rhs) : array_{rhs.array_}
 template<class T>
 SquareMatrix<T>& SquareMatrix<T>::operator=(const SquareMatrix<T>& rhs)
 {	
-	// Get dimensions
-	/**size_ = rhs.size_;
-
-	// (Re)Initialize Array
+	size_ = rhs.size_;
 	array_ = new T*[size_];
-	for (int i=0; i < size_; i++)
+	for(int i=0; i < size_; i++)
 	{
 		array_[i] = new T[size_];
 	}
 
-	// Fill Array
+	// copy the elewnts
 	for (int i=0; i < size_; i++)
 	{
 		for (int j=0; j < size_; j++)
 		{
 			array_[i][j] = rhs.array_[i][j];
 		}
-	} **/
-	if(this != &rhs)
-	{	
-		SquareMatrix copy = rhs;
-		swap(*this, copy);
-	}
-	return *this;
+	} 
+	
 }
 
 /** Move assignment **/
@@ -108,13 +94,17 @@ template<class T>
 bool SquareMatrix<T>::operator==(const SquareMatrix<T>& rhs) const
 {
 	if(size_ != rhs.size_)
+	{
 		return false;
+	}
 	for(int i=0; i<size_; i++)
 	{
 		for(int j=0; j<size_; j++)
 		{
 			if(array_[i][j] != rhs.array_[i][j])
+			{
 				return false;
+			}
 		}
 	}
 	return true;
@@ -143,14 +133,28 @@ SquareMatrix<T> SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs) const
 template<class T>
 void SquareMatrix<T>::resize(const int new_size)
 {
-	for (int i = 0; i < size_; i++)
+	T** tem = new T*[new_size];
+	for(int i=0; i<new_size; i++)
 	{
-		delete[] array_[i]; //This destroys all previous content of the matrix
+		tem[i]= new T[new_size];
 	}
-
-	delete[] array_;  //release memory
-	array_ = nullptr;
-	size_ = 0;
+	for(int i=0; i<size_; i++)
+	{
+		for(int j=0; j<size_; j++)
+		{
+			tem[i][j] = array_[i][j];
+		}
+	}
+	if(array_ != NULL)
+	{
+		for (int i = 0; i < size_; i++)
+		{
+			delete[] array_[i]; //This destroys all previous content of the matrix
+		}
+		delete[] array_;  //release memory
+	}
+	array_ = tem;
+	size_ = new_size;
 
 }
 
@@ -160,9 +164,13 @@ template<class T>
 const T& SquareMatrix<T>::at(int row, int col) const
 {
 	if(row > size_ || col > size_)
+	{
 		cout<< "out_of_range exception" << endl;
+	}
 	else
+	{
 		return array_[row][col];
+	}
 }
 
 /**@return the current size of square matrix**/
