@@ -34,7 +34,7 @@ SquareMatrix<T>::SquareMatrix()
 
 /** Destructor **/
 template<class T>
-SquareMatrix<T>::~SquareMatrix(){};
+SquareMatrix<T>::~SquareMatrix(){}
 
 /** copy constructor **/
 template<class T>
@@ -125,7 +125,7 @@ template<class T>
 SquareMatrix<T> SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs) const
 {
 	SquareMatrix<T> result(*this);
-	if(operator==(const SquareMatrix<T>& rhs)
+	if(operator==(rhs))
 	{   
 		for (int i = 0; i < size_; i++)
 		{
@@ -133,6 +133,7 @@ SquareMatrix<T> SquareMatrix<T>:: operator+ (const SquareMatrix<T>& rhs) const
 			{
 				result.array_[i][j] += rhs.array_[i][j];
 			}
+		}
 	}
 	return result;
 }
