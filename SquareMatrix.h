@@ -73,6 +73,7 @@ SquareMatrix<T>& SquareMatrix<T>::operator=(const SquareMatrix<T>& rhs)
 		}
 	} 
 	
+	return *this;	
 }
 
 /** Move assignment **/
@@ -167,10 +168,9 @@ const T& SquareMatrix<T>::at(int row, int col) const
 	{
 		cout<< "out_of_range exception" << endl;
 	}
-	else
-	{
-		return array_[row][col];
-	}
+	
+	return array_[row][col];
+
 }
 
 /**@return the current size of square matrix**/
