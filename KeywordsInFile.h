@@ -1,4 +1,5 @@
-
+#ifndef KEYWORDSINFILE_H
+#define	KEYWORDSINFILE_H
 #include<iostream>
 #include<string>
 using namespace std;
@@ -15,3 +16,7 @@ class KeywordsInFile
   
   private:
     
+  
+};
+
+#endif
