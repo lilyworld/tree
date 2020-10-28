@@ -1,11 +1,9 @@
 #include<KeywordsInFile.h>
 class KeywordsInFile
 {
-    public:
-    vector<string> Keywords;
-    unordered_map<string,int> store;
-    vector<vector<string>> v;
-    KeywordsInFile(const char *file filename_with_keywords,const char *filename_with_text)
+    public:   
+    KeywordsInFile(){}; // default constructor
+    KeywordsInFile(const char *filename_with_keywords, const char *filename_with_text)
     {
         int i;
         fstream newfile;
@@ -59,13 +57,13 @@ class KeywordsInFile
         }
       
     }
-    bool KeywordFound(string str)
+    bool KeywordFound(string keyword)
     {
         if(stored[str]>=1)
         return true;
         return false;
     }
-    int KeywordInLine(string str,int line)
+    int KeywordInLine(string keyword, int line_number)
     {
         int i,count;
         count=0;
@@ -76,7 +74,7 @@ class KeywordsInFile
         }
         return count;
     }
-    int TotalOccurrences(string str)
+    int TotalOccurrences(string keyword)
     {
         return stored[str];
     }
@@ -96,4 +94,9 @@ class KeywordsInFile
         }
         cout<<endl;
     }
+    
+    private:
+        vector<string> Keywords;
+        unordered_map<string,int> store;
+        vector<vector<string>> v;
 };
