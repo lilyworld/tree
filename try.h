@@ -1,5 +1,5 @@
-#ifndef KEYWORDSINFILE_H
-#define	KEYWORDSINFILE_H
+#ifndef TRY_H
+#define	TRY_H
 #include <iostream>
 #include <string>
 #include <vector>
