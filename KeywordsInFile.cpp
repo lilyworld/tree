@@ -88,9 +88,9 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 
 void KeywordsInFile::operator<<(KeywordsInFile obj)
 {
-	unordered_set<string> :: iterator itr;
+	unordered_map<string, int> :: iterator itr;
 	cout<<"keywords in filename_with_keywords "<<endl;
-        for(i=0;i<obj.keywords.size();i++)
+        for(int i=0;i<obj.keywords.size();i++)
         {
             cout<<keywords[i]<<" ";
         }
