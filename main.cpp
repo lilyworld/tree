@@ -3,8 +3,8 @@
 
 int main()
 {
-    string keyFile = "your\\dir\\goes\\here\\key.txt";
-    string txtFile = "your\\dir\\goes\\here\\text.txt";
+    string keyFile = "keyword.txt";
+    string txtFile = "text_file.txt";
     KeywordsInFile file(keyFile, txtFile);
 
     //should return 0
