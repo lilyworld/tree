@@ -75,7 +75,7 @@ class KeywordsInFile
         cout << endl;
         cout <<"keywords in "<< filename_with_text << endl;
         unordered_map<string, int> result;
-        for(result=numOfKeyWord.begin(); result!=numOfKeyWord.end(); result++)
+        for(result=obj.numOfKeyWord.begin(); result!=obj.numOfKeyWord.end(); result++)
         {
             cout<<result->first<<" " << result->second;   //print the keywords appear in text file and the times
         }
