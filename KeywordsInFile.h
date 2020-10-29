@@ -27,10 +27,10 @@ class KeywordsInFile
     /** that allows you to use object of your class with cout. **/
     void operator<<(KeywordsInFile obj);
   
-  private:
-    std::vector<std::string> Keywords;
-    std::unordered_map<std::string,int> store;
-    std::vector<vector<std::string>> line_has_key;
+ private:
+    unordered_map<string, int> keywords;;  // 'keywords' will store all keywords in filename_with_keywords
+    unordered_map<string, int> numOfKeyWord;  // 'numOfKeyWord' will keep count of all keywords.
+    vector<vector<string>> wordsInLine;    // 'wordsInLine' will keep count of words in a particular line.
   
 };
 
