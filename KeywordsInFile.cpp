@@ -1,7 +1,7 @@
 #include  "KeywordsInFile.h"
 using namespace std;
 
-KeywordsInFile::KeywordsInFile(const& string filename_with_keywords, const& string filename_with_text)
+KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const string& filename_with_text)
 {
     ifstream fin(filename_with_keywords);
     if (fin.fail())
@@ -10,10 +10,10 @@ KeywordsInFile::KeywordsInFile(const& string filename_with_keywords, const& stri
 	  exit(1);
     }
 
-    string line;
+    std::string line;
     while(fin.is_open() && getline(fin, line))
     {     
-        vector<string> temp = Word(line);
+        vector<string> temp = Words(line);
     	for(auto i : temp)
 	{
 		keywords[i]++;
@@ -27,7 +27,7 @@ KeywordsInFile::KeywordsInFile(const& string filename_with_keywords, const& stri
 	 cerr << "File cannot be opened for reading." << endl;
 	 exit(1);
     }
-    string words;
+    std::string words;
     while(fin.is_open() && getline(fin, words)) 
     {
         vector<string> strings = Words(words);
@@ -57,7 +57,7 @@ KeywordsInFile::KeywordsInFile(const& string filename_with_keywords, const& stri
 
        wordsInLine.push_back(temp);
     }
-    file.close();
+    fin.close();
    
 }
 
