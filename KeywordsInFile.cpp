@@ -1,102 +1,85 @@
 #include<KeywordsInFile.h>
+using namespace std;
+
 class KeywordsInFile
 {
     public:   
-    KeywordsInFile(){}; // default constructor
-    KeywordsInFile(const char *filename_with_keywords, const char *filename_with_text)
+    KeywordsInFile(const& string *filename_with_keywords, const& string *filename_with_text)
     {
-        int i;
-        fstream newfile;
-      
-        newfile.open(filename_with_keywords,ios::in);
-        if (newfile.is_open())
-        {
-            string tp;
-            while(getline(newfile, tp))
+        ifstream fin(filename_with_keywords);
+	    if (fin.fail())
+	    {
+		    cerr << "File cannot be opened for reading." << endl;
+	   	    exit(1);
+	    }
+ 
+        string line;
+        while(fin.is_open() && getline(fin, line))
+        {     
+            vector<string> temp;
+            string str=" ";
+            for(int i=0; i<line.length(); i++)
             {
-                string s="";
-                for(i=0;i<tp.length();i++)
+                if((line[i]>='a' && line[i]<='z')||(line[i]>'A'&& line[i]<='Z'))
                 {
-                    if((tp[i]>='a'&&tp[i]<='z')||(tp[i]>'A'&&tp[i]<='Z'))
-                    {
-                        s+=string(1,tp[i]);
-                    }
-                    else
-                    {
-                        Keywords.push_back(s);
-                        s="";
-                    }
+                    str+=string(1,line[i]);
+                }
+                else
+                {
+                    Keywords.push_back(s);  
+                    temp.push_back(str);
+                    numOfKeyWord[str]+=1;
+                    str=" ";
                 }
             }
-        }
-        newfile.close();
-      
-        newfile.open(filename_with_text,ios::in);
-        if(newfile.is_open())
-        {
-            string tp;
-            while(getline(newfile, tp))
-            {
-                vector<string> v1;
-                string s="";
-                for(i=0;i<tp.length();i++)
-                {
-                    if((tp[i]>='a'&&tp[i]<='z')||(tp[i]>'A'&&tp[i]<='Z'))
-                    {
-                        s+=string(1,tp[i]);
-                    }
-                    else
-                    {
-                        v1.push_back(s);
-                        store[s]+=1;
-                        s="";
-                    }
-                }
-                v.push_back(v1);
-            }
-        }
-      
-    }
-    bool KeywordFound(string keyword)
-    {
-        if(stored[str]>=1)
-        return true;
-        return false;
-    }
-    int KeywordInLine(string keyword, int line_number)
-    {
-        int i,count;
-        count=0;
-        for(i=0;i<v[line].size();i++)
-        {
-            if(v[line][i]==str)
-            count+=1;
-        }
-        return count;
-    }
-    int TotalOccurrences(string keyword)
-    {
-        return stored[str];
-    }
-    void operator<<(KeywordsInFile obj)
-    {
-        int i;
-        cout<<"keywords in "<<filename_with_keywords<<endl;
-        for(i=0;i<keywords.size();i++)
-        {
-            cout<<keywords[i]<<" ";
-        }
-        cout<<endl;
-        cout<<"words in "<<filename_with_text<<endl;
-        for(it=stored.begin();it!=stored.end();it++)
-        {
-            cout<<it->first<<" ";
-        }
-        cout<<endl;
+            
+            wordsInLine.push_back(temp);            
+        } 
+        
+       fin.close();        
     }
     
-    private:
-        vector<string> Keywords;
-        unordered_map<string,int> store;
-        vector<vector<string>> v;
+    bool KeywordFound(string keyword)
+    {
+        /**@return true if there exist keyword, otherwise return false **/
+        return numOfKeyWord[keyword] >= 1;
+    }
+    
+    int KeywordInLine(string keyword, int line_number)
+    {
+        // If file is not having lesser number of lines, return -1;
+       if(line_number > wordsInLine.size())
+       {
+           return -1;
+       }
+       // If keyword is not present in that line return 0.
+       else if(wordsInLine[line_number-1].find(keyword) == wordsInLine[line_number-1].end())
+       {
+           return 0;
+       }
+       return wordsInLine[line_number-1][keyword];
+    }
+    
+    int TotalOccurrences(string keyword)
+    {
+        return numOfKeyWord[keyword];
+    }
+    
+    void operator<<(KeywordsInFile obj)
+    {
+        cout << "keywords in "<< filename_with_keywords << endl;
+        for(int i=0; i<keywords.size(); i++)
+        {
+            cout << keywords[i] << " ";   //list the keywords in keyword file
+        }
+        cout << endl;
+        cout <<"keywords in "<< filename_with_text << endl;
+        unordered_map<string, int> result;
+        for(result=numOfKeyWord.begin(); result!=numOfKeyWord.end(); result++)
+        {
+            cout<<result->first<<" " << result->second;   //print the keywords appear in text file and the times
+        }
+        cout << endl;
+    }
+    
 };
