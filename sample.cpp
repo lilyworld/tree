@@ -162,6 +162,19 @@ int main(void) {
 
    // Creating object and initializing its instance variables.
    KeywordsInFile object(keywords_file, text_file);
+   std::cout << "KEYWORDFOUND()" << std::endl;
+    std::cout << object.KeywordFound("night") <<std::endl;
+
+    //should return 6
+    std::cout << "TOTALOCCURENCES()" << std::endl;
+    std::cout << object.TotalOccurrences("lazy") << std::endl;
+
+    //should print "keyword:occurences" for each keyword
+    //std::cout << "OS>>" << std::endl;
+    //std::cout << file << std::endl;
+
+    //should print 3 for line 3 (4 in total text file)
+    std::cout << object.KeywordInLine("lol", 3) << std::endl;
 
    // Printing output for object.
    cout << object;
