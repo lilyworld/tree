@@ -35,17 +35,17 @@ class KeywordsInFile
     std::vector<std::string> Words(std::string str)  // use to store words in keyword file or text file
     {
         std::vector<std::string> word;
-        while(int i<str.size())
+        while(int i<std::str.size())
         {
             std::string temp = " ";
-            while(int i<str.size() && (str[i]>= 'a' && str[i]<= 'z') || (str[i]>= 'A' && str[i] <= 'Z'))
+            while(int i<std::str.size() && (str[i]>= 'a' && str[i]<= 'z') || (str[i]>= 'A' && str[i] <= 'Z'))
             {
                 temp += str[i];   // store the letters before a seperator
                 i++;
             }
             if(temp != "") 
             {
-                 word.push_back(temp);  // string temp store in vector
+                 std::word.push_back(temp);  // string temp store in vector
             }
             i++;
          }
