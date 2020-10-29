@@ -21,16 +21,17 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
        for(int i=0; i<line.size(); i++)
        {
        	  string temp = "";
-          while(int i < line.size() && (line[i] >= 'a' && line[i] <= 'z') || (line[i] >= 'A' && line[i] <= 'Z'))
+          if((line[i] >= 'a' && line[i] <= 'z') || (line[i] >= 'A' && line[i] <= 'Z'))
           {
-           temp += line[i];
-           i++;
+            temp += line[i];
+            i++;
           }
-          if(temp != "")
+          else
 	  {
             keywords.push_back(temp);
+	    temp =" ";
           }
-          i++;
+  
    	}
     }
     fin.close();     
@@ -47,17 +48,18 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
         for(int i=0; i<words.size(); i++)
         {
        	  string temp = "";
-          while(int i < words.size() && (words[i] >= 'a' && words[i] <= 'z') || (words[i] >= 'A' && words[i] <= 'Z'))
+          if((words[i] >= 'a' && words[i] <= 'z') || (words[i] >= 'A' && words[i] <= 'Z'))
           {
            temp += words[i];
            i++;
           }
-          if(temp != "")
+          else
 	  {
             text.push_back(temp);
-	    countOfKeyword[temp]+=1;         
+	    countOfKeyword[temp]+=1; 
+	    temp = " ";
           }
-          i++;
+      
    	}
     }
     file.close();
