@@ -1,6 +1,9 @@
 #include "try.h"
 #include <fstream>
+#include <string>
+#include <iostream>
 using namespace std;
+
 
 KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const string& filename_with_text)
 {
