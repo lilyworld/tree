@@ -5,22 +5,22 @@ using namespace std;
 
 int main()
 {
-    string keyFile = "keyword.txt";
-    string txtFile = "text_file.txt";
+    std::string keyFile = "keyword.txt";
+    std::string txtFile = "text_file.txt";
     KeywordsInFile file(keyFile, txtFile);
 
     //should return 0
-    cout << "KEYWORDFOUND()" << endl;
-    cout << file.KeywordFound("night") << endl;
+    std::cout << "KEYWORDFOUND()" << std::endl;
+    std::cout << file.KeywordFound("night") <<std::endl;
 
     //should return 6
-    cout << "TOTALOCCURENCES()" << endl;
-    cout << file.TotalOccurences("lazy") << endl;
+    std::cout << "TOTALOCCURENCES()" << std::endl;
+    std::cout << file.TotalOccurences("lazy") << std::endl;
 
     //should print "keyword:occurences" for each keyword
-    cout << "OS>>" << endl;
-    cout << file << endl;
+    std::cout << "OS>>" << std::endl;
+    std::cout << file << std::endl;
 
     //should print 3 for line 3 (4 in total text file)
-    cout << file.KeywordInLine("lol", 3) << endl;
+    std::cout << file.KeywordInLine("lol", 3) << std::endl;
 }
