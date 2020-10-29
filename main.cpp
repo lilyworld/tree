@@ -1,5 +1,7 @@
 #include <iostream>
 #include "KeywordsInFile.h"
+#include "KeywordsInFile.cpp"
+using namespace std;
 
 int main()
 {
@@ -13,7 +15,7 @@ int main()
 
     //should return 6
     cout << "TOTALOCCURENCES()" << endl;
-    cout << file.totalOccurences("lazy") << endl;
+    cout << file.TotalOccurences("lazy") << endl;
 
     //should print "keyword:occurences" for each keyword
     cout << "OS>>" << endl;
