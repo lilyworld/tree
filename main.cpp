@@ -1,22 +1,24 @@
-#include<iostream>
-#include"KeywordsInFile.h"
-#include"KeywordsInFile.cpp"
+#include <iostream>
+#include "KeywordsInFile.h"
 
-using namespace std;
+int main()
+{
+    string keyFile = "your\\dir\\goes\\here\\key.txt";
+    string txtFile = "your\\dir\\goes\\here\\text.txt";
+    KeywordsInFile file(keyFile, txtFile);
 
-int main(void) {
-   // 'text_file' will take user input for text file.
-   // 'keywords_file' wwill take user input for keyword file.
-   string text_file, keywords_file;
-   cout << "Enter the file name of file containing keywords: ";
-   cin >> keywords_file;
-   cout << "Enter the file name of simple text file: ";
-   cin >> text_file;
+    //should return 0
+    cout << "KEYWORDFOUND()" << endl;
+    cout << file.KeywordFound("night") << endl;
 
-   // Creating object and initializing its instance variables.
-   KeywordsInFile object(keywords_file, text_file);
+    //should return 6
+    cout << "TOTALOCCURENCES()" << endl;
+    cout << file.totalOccurences("lazy") << endl;
 
-   // Printing output for object.
-   cout << object;
-   return 0;
+    //should print "keyword:occurences" for each keyword
+    cout << "OS>>" << endl;
+    cout << file << endl;
+
+    //should print 3 for line 3 (4 in total text file)
+    cout << file.KeywordInLine("lol", 3) << endl;
 }
