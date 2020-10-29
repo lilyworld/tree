@@ -1,7 +1,8 @@
 #include "try.h"
+#include <iostream>
 #include <fstream>
 #include <string>
-#include <iostream>
+
 using namespace std;
 
 
@@ -17,10 +18,10 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
     std::string line;
     while(fin.is_open() && getline(fin, line))
     {     
-       for(int i=0;  i<line.size(); i++)
+       for(int i=0; i<line.size(); i++)
        {
        	  string temp = "";
-          while(int i < line.size() && (line[i] >= 'a' && str[i] <= 'z') || (line[i] >= 'A' && line[i] <= 'Z'))
+          while(int i < line.size() && (line[i] >= 'a' && line[i] <= 'z') || (line[i] >= 'A' && line[i] <= 'Z'))
           {
            temp += line[i];
            i++;
@@ -43,24 +44,21 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
     std::string words;
     while(file.is_open() && getline(file, words)) 
     {
-        vector<string> file;
-        for( int i=0; i<words.size(); i++)
+        for(int i=0; i<words.size(); i++)
         {
        	  string temp = "";
-          while(int i < words.size() && (words[i] >= 'a' && str[i] <= 'z') || (words[i] >= 'A' && words[i] <= 'Z'))
+          while(int i < words.size() && (words[i] >= 'a' && words[i] <= 'z') || (words[i] >= 'A' && words[i] <= 'Z'))
           {
            temp += words[i];
            i++;
           }
           if(temp != "")
 	  {
-            file.push_back(temp);
+            text.push_back(temp);
 	    countOfKeyword[temp]+=1;         
           }
           i++;
    	}
-
-       text.push_back(file);
     }
     file.close();
    
@@ -75,10 +73,10 @@ bool KeywordsInFile::KeywordFound(string keyword)
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
        int count = 0;
-        for(int i=0; i<text[line_number].size();i++)
+        for(int i=0; i<text[line_number-1].size();i++)
         {
-            if(text[line_number][i]==keyword)
-            count++;
+            if(text[line_number-1].find(keyword))
+            	count++;
         }
         return count;
 }
