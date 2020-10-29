@@ -13,7 +13,7 @@ class KeywordsInFile
     /** Parameterized constructor
      @param filename_with_keywords: is a name of a plain text file that contains the list of keywords.
      @param filename_with_text: is a name of a plain text file that contains the text where the keywords must be found.  **/
-    KeywordsInFile(std::const& string filename_with_keywords, std::const& string filename_with_text);
+    KeywordsInFile(const& std::string filename_with_keywords, const& std::string filename_with_text);
   
     /**@returns true if the specified keyword was found in the text. Returns false otherwise. **/
     bool KeywordFound(std::string keyword);
