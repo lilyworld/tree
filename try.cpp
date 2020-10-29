@@ -17,7 +17,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
     std::string line;
     while(fin.is_open() && getline(fin, line))
     {     
-       while(int i < line.length())
+       for(int i=0;  i<line.size(); i++)
        {
        	  string temp = "";
           while(int i < line.size() && (line[i] >= 'a' && str[i] <= 'z') || (line[i] >= 'A' && line[i] <= 'Z'))
@@ -44,7 +44,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
     while(file.is_open() && getline(file, words)) 
     {
         vector<string> file;
-        while(int i < words.length())
+        for( int i=0; i<words.size(); i++)
         {
        	  string temp = "";
           while(int i < words.size() && (words[i] >= 'a' && str[i] <= 'z') || (words[i] >= 'A' && words[i] <= 'Z'))
@@ -69,15 +69,15 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
 bool KeywordsInFile::KeywordFound(string keyword)
 {
      /**@return true if there exist keyword, otherwise return false **/
-     return numOfKeyWord[keyword] >= 1;
+     return countOfKeyword[keyword] >= 1;
 }
 
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
        int count = 0;
-        for(int i=0; i<text[line].size();i++)
+        for(int i=0; i<text[line_number].size();i++)
         {
-            if(text[line][i]==keyword)
+            if(text[line_number][i]==keyword)
             count++;
         }
         return count;
@@ -85,8 +85,8 @@ int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 
 int KeywordsInFile::TotalOccurrences(string keyword)
 {
-	return numOfKeyWord[keyword];
-}
+	return countOfKeyword[keyword];
+};
 /**
 void KeywordsInFile::operator<<(KeywordsInFile obj)
 {
