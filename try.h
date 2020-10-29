@@ -29,7 +29,7 @@ class KeywordsInFile
     void operator<<(KeywordsInFile obj);
   
  private:
-    std::unordered_map<std::string, int> keywords;  // 'keywords' will store all keywords in filename_with_keywords
-    std::unordered_map<std::string, int> text;  // 'numOfKeyWord' will keep count of all keywords.
-    //std::vector<std::string> wordsInLine;    // 'wordsInLine' will keep count of words in the specified line.
-    int coutOfWord;
+    std::vector<std::string> keywords;  // 'keywords' will store all keywords in filename_with_keywords
+    std::unordered_map<std::string, int> countOfKeyword;  // 'numOfKeyWord' will keep count of all keywords.
+    std::vector<std::string> text;    // 'wordsInLine' will keep count of words in the specified line.
+
