@@ -13,7 +13,7 @@ class KeywordsInFile
     /** Parameterized constructor
      @param filename_with_keywords: is a name of a plain text file that contains the list of keywords.
      @param filename_with_text: is a name of a plain text file that contains the text where the keywords must be found.  **/
-    KeywordsInFile(const& std::string filename_with_keywords, const& std::string filename_with_text);
+    KeywordsInFile(const std::string& filename_with_keywords, const std::string& filename_with_text);
   
     /**@returns true if the specified keyword was found in the text. Returns false otherwise. **/
     bool KeywordFound(std::string keyword);
@@ -31,7 +31,7 @@ class KeywordsInFile
     std::unordered_map<std::string, int> keywords;  // 'keywords' will store all keywords in filename_with_keywords
     std::unordered_map<std::string, int> numOfKeyWord;  // 'numOfKeyWord' will keep count of all keywords.
     std::vector<std::vector<std::string>> wordsInLine;    // 'wordsInLine' will keep count of words in the specified line.
-    std::vector<string> Words(std::string str)  // use to store words in keyword file or text file
+    std::vector<std::string> Words(std::string str)  // use to store words in keyword file or text file
     {
         std::vector<std::string> word;
         while(int i < str.size())
