@@ -116,7 +116,7 @@ int main()
    cout << "Enter the file name of simple text file: ";
    cin >> text_file;
 	
-    KeywordsInFile file(keywords_file, text_fil);
+    KeywordsInFile file(keywords_file, text_file);
 
     //should return 0
     std::cout << "KEYWORDFOUND()" << std::endl;
