@@ -96,7 +96,7 @@ void KeywordsInFile::operator<<(KeywordsInFile obj)
         }
         cout<<endl;
         cout<<"words in filename_with_text " <<endl;
-        for(itr=obj.numOfKeyWord.begin();itr!=obj.numOfKeyWord.end();it++)
+        for(itr=obj.numOfKeyWord.begin(); itr!=obj.numOfKeyWord.end();itr++)
         {
             cout<<itr->first<<" " <<itr->second;
         }
