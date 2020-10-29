@@ -129,7 +129,7 @@ int main()
 
   
     std::cout << "OS>>" << std::endl;
-    std::cout << file << std::endl;
+    operator<<(file);
 
     //should print 3 for line 3 (4 in total text file)
     std::cout << file.KeywordInLine("lol", 3) << std::endl;
