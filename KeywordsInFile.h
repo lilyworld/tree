@@ -31,11 +31,11 @@ class KeywordsInFile
  private:
     std::unordered_map<std::string, int> keywords;  // 'keywords' will store all keywords in filename_with_keywords
     std::unordered_map<std::string, int> numOfKeyWord;  // 'numOfKeyWord' will keep count of all keywords.
-    std::vector<std::vector<std::string>> wordsInLine;    // 'wordsInLine' will keep count of words in the specified line.
+    std::vector<std::string> wordsInLine;    // 'wordsInLine' will keep count of words in the specified line.
     std::vector<std::string> Words(std::string str)  // use to store words in keyword file or text file
     {
         std::vector<std::string> word;
-        while(int i<str.size())
+        while(int i<str.length())
         {
             std::string temp = " ";
             while(int i<str.size() && (str[i]>= 'a' && str[i]<= 'z') || (str[i]>= 'A' && str[i] <= 'Z'))
