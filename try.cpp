@@ -127,9 +127,9 @@ int main()
     std::cout << "TOTALOCCURENCES()" << std::endl;
     std::cout << file.TotalOccurrences("lazy") << std::endl;
 
-    //should print "keyword:occurences" for each keyword
-    //std::cout << "OS>>" << std::endl;
-    //std::cout << file << std::endl;
+  
+    std::cout << "OS>>" << std::endl;
+    std::cout << file << std::endl;
 
     //should print 3 for line 3 (4 in total text file)
     std::cout << file.KeywordInLine("lol", 3) << std::endl;
