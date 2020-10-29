@@ -75,10 +75,12 @@ bool KeywordsInFile::KeywordFound(string keyword)
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
        int count = 0;
-        for(int i=0; i<text[line_number-1].size();i++)
+        for(int i=0; i<text[line_number-1].size(); i++)
         {
-            if(text[line_number-1].find(keyword))
+            while(text[line_number-1].find(keyword))
+	    {
             	count++;
+	    }
         }
         return count;
 }
@@ -87,24 +89,23 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 {
 	return countOfKeyword[keyword];
 };
-/**
+
 void KeywordsInFile::operator<<(KeywordsInFile obj)
 {
 	unordered_map<string, int> :: iterator itr;
 	cout<<"keywords in filename_with_keywords "<<endl;
-        for(int i=0;i<obj.keywords.size();i++)
+        for(int i=0; i<obj.keywords.size();i++)
         {
             cout<<keywords[i]<<" ";
         }
         cout<<endl;
         cout<<"words in filename_with_text " <<endl;
-        for(itr=obj.numOfKeyWord.begin(); itr!=obj.numOfKeyWord.end();itr++)
+        for(int i=0; i<obj.text.size(); i++)
         {
-            cout<<itr->first<<" " <<itr->second;
+            cout<<text[i]<<" ";
         }
         cout<<endl;
 }
-**/
 
 int main()
 {
