@@ -1,7 +1,7 @@
 #include  "KeywordsInFile.h"
 using namespace std;
 
-KeywordsInFile::KeywordsInFile(const& string *filename_with_keywords, const& string *filename_with_text)
+KeywordsInFile::KeywordsInFile(const& string filename_with_keywords, const& string filename_with_text)
 {
     ifstream fin(filename_with_keywords);
     if (fin.fail())
@@ -13,27 +13,52 @@ KeywordsInFile::KeywordsInFile(const& string *filename_with_keywords, const& str
     string line;
     while(fin.is_open() && getline(fin, line))
     {     
-        vector<string> temp;
-    	string str=" ";
-    	for(int i=0; i<line.length(); i++)
-    	{
-		if((line[i]>='a' && line[i]<='z')||(line[i]>'A'&& line[i]<='Z'))
-		{
-	    	     str+=string(1,line[i]);
-		}
-		else
-		{
-		    Keywords.push_back(s);  
-		    temp.push_back(str);
-		    numOfKeyWord[str]+=1;
-		    str=" ";
-		}
-   	}	
-
-   	wordsInLine.push_back(temp);            
+        vector<string> temp = Word(line);
+    	for(auto i : temp)
+	{
+		keywords[i]++;
+	}
      } 
+    fin.close();     
 
-    fin.close();        
+    ifstream fin(filename_with_text);
+    if (fin.fail())
+    {
+	 cerr << "File cannot be opened for reading." << endl;
+	 exit(1);
+    }
+    string words;
+    while(fin.is_open() && getline(fin, words)) 
+    {
+        vector<string> strings = Words(words);
+        unordered_map<string, int> temp;
+        for(auto i: strings)
+	{
+	   // If word is not present, intialize its count with '0'.
+	   if(numOfKeyWord.find(i) == numOfKeyWord.end())
+	   {
+	       numOfKeyWord[i] = 0;
+	   }
+	   // Incrementing count of words found in line.
+	   else
+	   {
+	       numOfKeyWord[i] ++;
+	   }
+	   // temp will count occurrence of each word in a particular line.
+	   if(temp.find(i) == temp.end())
+	   {
+	       temp[i] = 0;
+	   }
+	   else
+	   {
+	       temp[i] ++;
+	   }
+       }
+
+       wordsInLine.push_back(temp);
+    }
+    file.close();
+   
 }
 
 bool KeywordsInFile::KeywordFound(string keyword)
@@ -44,7 +69,6 @@ bool KeywordsInFile::KeywordFound(string keyword)
 
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
-      // If file is not having lesser number of lines, return -1;
       if(line_number > wordsInLine.size())
       {
    	  return -1;
@@ -64,18 +88,18 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 
 void KeywordsInFile::operator<<(KeywordsInFile obj)
 {
-	cout << "keywords in "<< filename_with_keywords << endl;
-	for(int i=0; i<keywords.size(); i++)
-	{
-	    cout << keywords[i] << " ";   //list the keywords in keyword file
-	}
-	cout << endl;
-	cout <<"keywords in "<< filename_with_text << endl;
-	unordered_map<string, int> result;
-	for(result=obj.numOfKeyWord.begin(); result!=obj.numOfKeyWord.end(); result++)
-	{
-	    cout<<result->first<<" " << result->second;   //print the keywords appear in text file and the times
-	}
-	cout << endl;
+	unordered_set<string> :: iterator itr;
+	cout<<"keywords in filename_with_keywords "<<endl;
+        for(i=0;i<obj.keywords.size();i++)
+        {
+            cout<<keywords[i]<<" ";
+        }
+        cout<<endl;
+        cout<<"words in filename_with_text " <<endl;
+        for(itr=obj.numOfKeyWord.begin();itr!=obj.numOfKeyWord.end();it++)
+        {
+            cout<<itr->first<<" " <<itr->second;
+        }
+        cout<<endl;
 }
     
