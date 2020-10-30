@@ -63,14 +63,14 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
      unordered_map<string, int> xxx;
      for(auto i: text)
      {
-	   if(countOfKeyWord.find(i) == countOfKeyWord.end())
+	   if(countOfKeyword.find(i) == countOfKeyword.end())
 	   {
-	       countOfKeyWord[i] = 1;
+	       countOfKeyword[i] = 1;
 	   }
 	   // Incrementing count of words found in line.
 	   else
 	   {
-	       countOfKeyWord[i] += 1;
+	       countOfKeyword[i] += 1;
 	   }
 	   // temp will count occurrence of each word in a particular line.
 	   if(xxx.find(i) == xxx.end())
