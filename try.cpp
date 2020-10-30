@@ -60,7 +60,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
           }
       
     }
-     unordered_map<string, int> xxx;
+     
      for(auto i: text)
      {
 	   if(countOfKeyword.find(i) == countOfKeyword.end())
@@ -72,18 +72,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
 	   {
 	       countOfKeyword[i] += 1;
 	   }
-	   // temp will count occurrence of each word in a particular line.
-	   if(xxx.find(i) == xxx.end())
-	   {
-	       xxx[i] = 1;
-	   }
-	   else
-	   {
-	       xxx[i] += 1;
-	   }
-     }
-
-       wordsInLine.push_back(xxx);
+	   
     }
     file.close();
    
@@ -97,16 +86,13 @@ bool KeywordsInFile::KeywordFound(string keyword)
 
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
-        if(line_number > wordsInLine.size())
-	{
-           return -1;
-        }
-       // If word is not present in that line return 0.
-       else if(wordsInLine[line_number-1].find(keyword) == wordsInLine[line_number-1].end())
-       {
-           return 0;
-       }
-       return wordsInLine[line_number-1][keyword];
+      int count =0;
+      for(int i=0; i<text[line_number-1].size(); i++)
+      {
+	    if(text[line_number][i]==keyword)
+	    count+=1;
+      }
+      return count;
 }
 
 int KeywordsInFile::TotalOccurrences(string keyword)
