@@ -102,11 +102,11 @@ int KeywordsInFile::KeywordInLine(string keyword, int line_number)
            return -1;
         }
        // If word is not present in that line return 0.
-       else if(wordsInLine[line_number-1].find(word) == wordsInLine[line_number-1].end())
+       else if(wordsInLine[line_number-1].find(keyword) == wordsInLine[line_number-1].end())
        {
            return 0;
        }
-       return wordsInLine[line_number-1][word];
+       return wordsInLine[line_number-1][keyword];
 }
 
 int KeywordsInFile::TotalOccurrences(string keyword)
