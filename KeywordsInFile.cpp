@@ -1,4 +1,4 @@
-#include "try.h"
+#include "KeywordsInFile.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -103,21 +103,23 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 	return countOfKeyword[keyword];
 }
 
-void KeywordsInFile::operator<<(KeywordsInFile obj)
+ostream KeywordsInFile::operator<<(ostream &output, KeywordsInFile &obj)
 {
 	unordered_map<string, int> :: iterator itr;
-	cout<<"keywords in filename_with_keywords "<<endl;
+	output<<"keywords in filename_with_keywords "<<endl;
         for(int i=0; i<obj.keywords.size();i++)
         {
             cout<<keywords[i]<<" ";
         }
         cout<<endl;
-        cout<<"words in filename_with_text " <<endl;
+        output<<"words in filename_with_text " <<endl;
         for(int i=0; i<obj.text.size(); i++)
         {
             cout<<text[i]<<" ";
         }
+	output << obj.
         cout<<endl;
+	return output;
 }
 
 int main()
@@ -141,7 +143,7 @@ int main()
     std::cout << file.TotalOccurrences("lazy") << std::endl;
 
 
-   // cout<<file;
+    cout<<file;
 
     //should print 3 for line 3 (4 in total text file)
     std::cout << file.KeywordInLine("lol", 3) << std::endl;
