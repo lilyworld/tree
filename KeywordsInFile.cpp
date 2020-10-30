@@ -107,24 +107,17 @@ ostream &operator<<(ostream &output, KeywordsInFile &obj)
 {
 	unordered_map<string, int> :: iterator itr;
 	output<<"keywords in filename_with_keywords "<<endl;
-	for(itr = obj.keywords.begin(); itr != obj.keywords.end(); ++itr)
-	{
-   		cout << *itr << ", ";
+        for(int i=0; i<obj.keywords.size();i++)
+        {
+            cout<<keywords[i]<<" ";
         }
         cout<<endl;
-	
-	// Priting keywords in text file.
-	output << "Keywords present in text file: \n";
-	for(itr = obj.text.begin(); itr != obj.text.end(); ++itr)
-	{
-   		if(obj.keywords[*itr])
-		{
-       		     cout << *itr << ", ";
-		}
+        output<<"words in filename_with_text " <<endl;
+        for(int i=0; i<obj.text.size(); i++)
+        {
+            cout<<text[i]<<" ";
         }
-
         cout<<endl;
-	return output;
 }
 
 int main()
