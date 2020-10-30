@@ -90,8 +90,10 @@ int KeywordsInFile::KeywordInLine(string keyword, int line_number)
       int count =0;
       for(int i=0; i<text[line_number-1].size(); i++)
       {
-	    if(text[line_number][i]==keyword)
-	    count+=1;
+	    if(text[line_number].find(keyword))
+	    {
+		    count+=1;
+	    }
       }
       return count;
 }
