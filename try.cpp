@@ -58,6 +58,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
             text.push_back(temp);
 	    temp = " ";
           }
+	}
       
     }
      
@@ -98,7 +99,7 @@ int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 int KeywordsInFile::TotalOccurrences(string keyword)
 {
 	return countOfKeyword[keyword];
-};
+}
 
 void KeywordsInFile::operator<<(KeywordsInFile obj)
 {
