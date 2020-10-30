@@ -107,7 +107,7 @@ ostream &operator<<(ostream &output, KeywordsInFile &obj)
 {
 	unordered_map<string, int> :: iterator itr;
 	output<<"keywords in filename_with_keywords "<<endl;
-	for(itr = obj.keyword.begin(); itr != obj.keyword.end(); ++itr)
+	for(itr = obj.keywords.begin(); itr != obj.keywords.end(); ++itr)
 	{
    		cout << *itr << ", ";
         }
