@@ -24,9 +24,10 @@ class KeywordsInFile
   
     /**@returns the total number of the occurrences of the given keyword in the text. **/
     int TotalOccurrences(std::string keyword);
-  
+
+   
     /** that allows you to use object of your class with cout. **/
-    friend std::ostream &operator << (std::ostream &output, KeywordsInFile &obj);
+    //std::ostream &operator << (std::ostream &output, KeywordsInFile &obj);   /**it will  be a non-class function**/
   
  private:
     std::vector<std::string> keywords;  // 'keywords' will store all keywords in filename_with_keywords
