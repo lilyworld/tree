@@ -83,7 +83,7 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
 	   }
      }
 
-       //wordsInLine.push_back(xxx);
+       wordsInLine.push_back(xxx);
     }
     file.close();
    
@@ -97,15 +97,16 @@ bool KeywordsInFile::KeywordFound(string keyword)
 
 int KeywordsInFile::KeywordInLine(string keyword, int line_number)
 {
-       int count = 0;
-        for(int i=0; i<text[line_number-1].size(); i++)
-        {
-            while(text[line_number-1].find(keyword))
-	    {
-            	count++;
-	    }
+        if(line_number > wordsInLine.size())
+	{
+           return -1;
         }
-        return count;
+       // If word is not present in that line return 0.
+       else if(wordsInLine[line_number-1].find(word) == wordsInLine[line_number-1].end())
+       {
+           return 0;
+       }
+       return wordsInLine[line_number-1][word];
 }
 
 int KeywordsInFile::TotalOccurrences(string keyword)
