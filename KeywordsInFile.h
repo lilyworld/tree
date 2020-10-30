@@ -27,7 +27,7 @@ class KeywordsInFile
 
    
     /** that allows you to use object of your class with cout. **/
-    //std::ostream &operator << (std::ostream &output, KeywordsInFile &obj);   /**it will  be a non-class function**/
+    void operator<<(KeywordsInFile obj);
   
  private:
     std::vector<std::string> keywords;  // 'keywords' will store all keywords in filename_with_keywords
