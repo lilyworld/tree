@@ -103,7 +103,7 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 	return countOfKeyword[keyword];
 }
 
-friend KeywordsInFile::ostream &operator<<(ostream &output, KeywordsInFile &obj)
+ostream &operator<<(ostream &output, KeywordsInFile &obj)
 {
 	unordered_map<string, int> :: iterator itr;
 	output<<"keywords in filename_with_keywords "<<endl;
@@ -148,7 +148,7 @@ int main()
     std::cout << file.TotalOccurrences("lazy") << std::endl;
 
 
-    //cout<<file;
+    cout<<file;
 
     //should print 3 for line 3 (4 in total text file)
     std::cout << file.KeywordInLine("lol", 3) << std::endl;
