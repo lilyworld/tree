@@ -56,11 +56,34 @@ KeywordsInFile::KeywordsInFile(const string& filename_with_keywords, const strin
           else
 	  {
             text.push_back(temp);
-	    countOfKeyword[temp]+=1; 
 	    temp = " ";
           }
       
-   	}
+    }
+     unordered_map<string, int> xxx;
+     for(auto i: text)
+     {
+	   if(countOfKeyWord.find(i) == countOfKeyWord.end())
+	   {
+	       countOfKeyWord[i] = 1;
+	   }
+	   // Incrementing count of words found in line.
+	   else
+	   {
+	       countOfKeyWord[i] += 1;
+	   }
+	   // temp will count occurrence of each word in a particular line.
+	   if(xxx.find(i) == xxx.end())
+	   {
+	       xxx[i] = 1;
+	   }
+	   else
+	   {
+	       xxx[i] += 1;
+	   }
+     }
+
+       //wordsInLine.push_back(xxx);
     }
     file.close();
    
@@ -127,8 +150,7 @@ int main()
     std::cout << "TOTALOCCURENCES()" << std::endl;
     std::cout << file.TotalOccurrences("lazy") << std::endl;
 
-  
-    std::cout << "OS>>" << std::endl;
+
     operator<<(file);
 
     //should print 3 for line 3 (4 in total text file)
