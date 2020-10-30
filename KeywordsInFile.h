@@ -26,7 +26,7 @@ class KeywordsInFile
     int TotalOccurrences(std::string keyword);
   
     /** that allows you to use object of your class with cout. **/
-    void operator<<(KeywordsInFile obj);
+    std::ostream operator<<(std::ostream &output, KeywordsInFile &obj);
   
  private:
     std::vector<std::string> keywords;  // 'keywords' will store all keywords in filename_with_keywords
