@@ -148,7 +148,7 @@ int main()
     std::cout << file.TotalOccurrences("lazy") << std::endl;
 
 
-    cout<<file;
+    //cout<<file;
 
     //should print 3 for line 3 (4 in total text file)
     std::cout << file.KeywordInLine("lol", 3) << std::endl;
