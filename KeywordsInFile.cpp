@@ -103,7 +103,7 @@ int KeywordsInFile::TotalOccurrences(string keyword)
 	return countOfKeyword[keyword];
 }
 
-ostream &operator<<(ostream &output, KeywordsInFile &obj)
+friend ostream &operator<<(ostream &output, KeywordsInFile &obj)
 {
 	unordered_map<string, int> :: iterator itr;
 	output<<"keywords in filename_with_keywords "<<endl;
@@ -118,6 +118,7 @@ ostream &operator<<(ostream &output, KeywordsInFile &obj)
             cout<<text[i]<<" ";
         }
         cout<<endl;
+	return output;
 }
 
 int main()
