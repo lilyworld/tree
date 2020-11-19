@@ -11,13 +11,12 @@ int Field::Weight(int x1, int y1, int x2, int y2);
 int Field::PathCost()
 {
     //see a see
-     int minPathSum(vector<vector<int>>& grid) {
-      if (grid.empty()) return 0;
+        if (element.empty()) return 0;
         
-        int rows = grid.size();
-        int cols = grid[0].size();
+        int rows = element.size();
+        int cols = element[0].size();
         
-        vector<vector<int>> memo= grid;
+        vector<vector<int>> memo= element;
         
         for (int i = 1; i < rows; i++) {
            memo[i][0] +=memo[i-1][0];
