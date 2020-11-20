@@ -7,7 +7,7 @@ Field::Field(const vector<vector<int>> & element)
     matirx = element;
     rows = element.size();
     cols = element[0].size();
-    //precompSum.resize(rows, vector<int> (columns));
+
     precompSum = element;
 
     // Precomputing for the rest of the 2D vector 
@@ -37,7 +37,7 @@ Field::Field(vector<vector<int>> && element)
     matirx = element;
     rows = element.size();
     cols = element[0].size();
-    //precompSum.resize(rows, vector<int> (columns));
+    
     precompSum = element;
 
     // Precomputing for the rest of the 2D vector 
@@ -68,10 +68,18 @@ int Field::Weight(int x1, int y1, int x2, int y2)
 {
      if((0 <= x1 < rows) && (0 <= x2 < rows) && (0 <= y1 < cols) && (0 <= y2 < cols))
      {
-        int topLeftX = min(y1, y2);
-        int topLeftY = min(x1, x2);
-        int bottomRightX = max(y1, y2);
-        int bottomRightY = max(x1, x2);
+        // find the new range i, j for computing small matirx
+        int rows1 = min(y1, y2);
+        int rows2 = max(y1, y2);
+        int cols1 = min(x1, x2);
+        int cols2 = max(x1, x2);
+         
+        for(int i=rows1; i<=rows2; i++)
+        {
+            for(int j=cols1; j<=cols2; j++)
+            {
+                ////think about how to use precompu
+        
         return precompSum[bottomRightX][bottomRightY] - ((topLeftY >= 1) ? precompSum[bottomRightX][topLeftY-1] : 0) - ((topLeftX >= 1) ? precompSum[topLeftX-1][bottomRightY] : 0) + ((topLeftX >=1 && topLeftY >= 1) ? precompSum[topLeftX-1][topLeftY-1] : 0);
      }
      else 
