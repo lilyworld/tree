@@ -5,7 +5,8 @@ using namespace std;
 
 int main()
 {
-    void printMatrix(const vector<vector<int>> &v) {
+    void printMatrix(const vector<vector<int>> &v)
+    {
         for(int i = 0; i < v.size(); i++) {
             for(int j = 0; j < v[0].size(); j++) {
                 cout << v[i][j] << " ";
@@ -13,10 +14,6 @@ int main()
             cout << "\n";
         }
     }
-}
-
-int main()
-{
     
     vector<vector<int>> v(5, vector<int> (6));
     for(int i = 0; i < 5; i++)
