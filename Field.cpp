@@ -83,8 +83,11 @@ int Field::Weight(int x1, int y1, int x2, int y2)
          if(rows>=1 && cols>=1)
              return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
      }
-     else 
+     else
+     {
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
+     }
+    
 }
 
 //This method computes the cost of the cheapest path from top-left corner of the field to the bottom-right corner.
