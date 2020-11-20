@@ -66,6 +66,7 @@ Field::Field(vector<vector<int>> && element)
  //need to do the precomputing in the constructors
 int Field::Weight(int x1, int y1, int x2, int y2)
 {
+     int rows, cols;
      if((0 <= x1 < rows) && (0 <= x2 < rows) && (0 <= y1 < cols) && (0 <= y2 < cols))
      {
         //remember the normal coordinate graph is Right to Up, here is Right to down.
@@ -80,8 +81,7 @@ int Field::Weight(int x1, int y1, int x2, int y2)
          if(rows1<1)
              return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] + precompSum[rows1-1][cols1-1];
          if(rows>=1 && cols>=1)
-            return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];
-             
+             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
      }
      else 
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
