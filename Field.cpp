@@ -66,7 +66,7 @@ Field::Field(vector<vector<int>> && element)
  //need to do the precomputing in the constructors
 int Field::Weight(int x1, int y1, int x2, int y2)
 {
-     if((0 <= x1 <= cols) && (0 <= x2 <= cols) && (0 <= y1 <= rows) && (0 <= y2 <= rows))
+     if((0 <= x1 <= rows) && (0 <= x2 <= rows) && (0 <= y1 <= cols) && (0 <= y2 <= cols))
      {
         //remember the normal coordinate graph is Right to Up, here is Right to down.
         int rows1 = min(y1, y2);
