@@ -5,8 +5,8 @@ using namespace std;
 Field::Field(const vector<vector<int>> & element)
 {
     matirx = element;
-    rows = element.size();
-    cols = element[0].size();
+    int rows = element.size();
+    int cols = element[0].size();
 
     precompSum = element;
 
@@ -35,8 +35,8 @@ Field::Field(const vector<vector<int>> & element)
 Field::Field(vector<vector<int>> && element)
 {
     matirx = element;
-    rows = element.size();
-    cols = element[0].size();
+    int rows = element.size();
+    int cols = element[0].size();
     
     precompSum = element;
 
@@ -80,7 +80,7 @@ int Field::Weight(int x1, int y1, int x2, int y2)
             {
                 ////think about how to use precompu
         
-        return precompSum[bottomRightX][bottomRightY] - ((topLeftY >= 1) ? precompSum[bottomRightX][topLeftY-1] : 0) - ((topLeftX >= 1) ? precompSum[topLeftX-1][bottomRightY] : 0) + ((topLeftX >=1 && topLeftY >= 1) ? precompSum[topLeftX-1][topLeftY-1] : 0);
+      
      }
      else 
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
@@ -92,8 +92,8 @@ int Field::PathCost()
 {
     if (matirx.empty()) return 0;
 
-    rows = matirx.size();
-    cols = matirx[0].size();
+    int rows = matirx.size();
+    int cols = matirx[0].size();
 
     for (int i = 0; i < rows; i++)
     {
