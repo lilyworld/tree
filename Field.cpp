@@ -5,8 +5,8 @@ using namespace std;
 Field::Field(const vector<vector<int>> & element)
 {
     matirx = element;
-    int rows = element.size();
-    int cols = element[0].size();
+    rows = element.size();
+    cols = element[0].size();
 
     precompSum = element;
 
@@ -35,8 +35,8 @@ Field::Field(const vector<vector<int>> & element)
 Field::Field(vector<vector<int>> && element)
 {
     matirx = element;
-    int rows = element.size();
-    int cols = element[0].size();
+    rows = element.size();
+    cols = element[0].size();
     
     precompSum = element;
 
@@ -66,7 +66,6 @@ Field::Field(vector<vector<int>> && element)
  //need to do the precomputing in the constructors
 int Field::Weight(int x1, int y1, int x2, int y2)
 {
-     int rows, cols;
      if((0 <= x1 < rows) && (0 <= x2 < rows) && (0 <= y1 < cols) && (0 <= y2 < cols))
      {
         //remember the normal coordinate graph is Right to Up, here is Right to down.
@@ -97,8 +96,8 @@ int Field::PathCost()
 {
     if (matirx.empty()) return 0;
 
-    int rows = matirx.size();
-    int cols = matirx[0].size();
+    rows = matirx.size();
+    cols = matirx[0].size();
 
     for (int i = 0; i < rows; i++)
     {
