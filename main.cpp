@@ -37,6 +37,7 @@ int main()
     cout <<"result is 25: " << field1.Weight(4,0,4,4) << "\n";
     cout <<"result is 24: " << field1.Weight(2,1,0,4) << "\n";
     cout <<"result is 21: " << field1.Weight(0,2,5,2) << "\n";
+    cout << "out of range: " << field1.Weight(1,6,7,2) << "\n";
     cout <<"result is 36: " << field1.Weight(2,2,4,4) << "\n";
     
     cout << field1.PathCost() << "\n";
