@@ -36,7 +36,7 @@ int main()
     
     cout << field1.PathCost() << "\n";
     
-    Field2 ({{2,2,2},{2,2,2},{2,2,2}});
+    Field field2 ({{2,2,2},{2,2,2},{2,2,2}});
     cout << "result is 10: " <<field2.PathCost() << "\n";
     
     return 0;
