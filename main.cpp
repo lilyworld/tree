@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Filed.h"
-#include "InFiled.cpp"
+#include "Field.h"
+#include "Field.cpp"
 using namespace std;
 
 int main()
