@@ -6,8 +6,8 @@
 class Field
 {
   public:
-    Field(const vector<vector<int>> & element);
-    Field(vector<vector<int>> && element);
+    Field(const std::vector<std::vector<int>> & element);
+    Field(std::vector<std::vector<int>> && element);
   
     /**@returns the sum of all elements in the rectangle defined by the points (x1,y1) and (x2,y2). **/
     //need to do the precomputing in the constructors
@@ -19,8 +19,8 @@ class Field
   
   private:
     int rows, cols;   //numbers of rows and cols
-    vector<vector<int>> matirx;   // store the 2-D matirx
-    vector<vector<int>> precompSum;  // store the precomputing sum
+    std::vector<std::vector<int>> matirx;   // store the 2-D matirx
+    std::vector<std::vector<int>> precompSum;  // store the precomputing sum
     
  };
 
