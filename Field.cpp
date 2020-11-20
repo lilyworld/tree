@@ -48,12 +48,12 @@ Field::Field(vector<vector<int>> && element)
             // do if there is only one element
             if(i == 0 && j == 0)
                     precompSum[i][j] = matirx[i][j];
-            // computing the first row
+            // computing if there is only one coloum (|)
             else if(i == 0)
-                    precompSum[i][j] = matirx[i][j] + precompSum[i][j-1]; 
-            // computing the first column
+                    precompSum[0][j] = matirx[0][j] + precompSum[0][j-1]; 
+            // computing if there is only one row  (---)
             else if(j == 0)
-                    precompSum[i][j] = matirx[i][j] + precompSum[i-1][j];
+                    precompSum[i][0] = matirx[i][0] + precompSum[i-1][0];
    
             else  // actually still feel mess if prof did not explain previous
                     precompSum[i][j] = matirx[i][j] + precompSum[i-1][j] + precompSum[i][j-1] - precompSum[i-1][j-1];  
@@ -68,19 +68,20 @@ int Field::Weight(int x1, int y1, int x2, int y2)
 {
      if((0 <= x1 < rows) && (0 <= x2 < rows) && (0 <= y1 < cols) && (0 <= y2 < cols))
      {
-        // find the new range i, j for computing small matirx
-        int rows1 = min(y1, y2);
-        int rows2 = max(y1, y2);
-        int cols1 = min(x1, x2);
-        int cols2 = max(x1, x2);
+        //remember the normal coordinate graph is Right to Up, here is Right to down.
+        int rows1 = min(x1, x2);
+        int rows2 = max(x1, x2);
+        int cols1 = min(y1, y2);
+        int cols2 = max(y1, y2);
          
-        for(int i=rows1; i<=rows2; i++)
-        {
-            for(int j=cols1; j<=cols2; j++)
-            {
-                ////think about how to use precompu
-        
-      
+        // Weight(1,1,1,1)=6-2-3+1=2; Weight(1,1,2,2)=18-3-6+1=10
+         if(cols1<1)
+             return precompSum[rows2][cols2] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];
+         if(rows1<1)
+             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] + precompSum[rows1-1][cols1-1];
+         if(rows>=1 && cols>=1)
+            return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];
+             
      }
      else 
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
