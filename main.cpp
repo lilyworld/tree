@@ -11,6 +11,7 @@ int main()
                 cout << v[i][j] << " ";
             }
             cout << "\n";
+        }
     }
 }
 
