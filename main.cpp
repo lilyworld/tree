@@ -30,13 +30,14 @@ int main()
     Field field1 = Field(v);
     cout << "\nField 1 \n";
     cout << field1.Weight(1,2,4,0) << "\n";
+    cout << "result is 1: " << field1.Weight(0,0,0,0) << "\n";
+    cout << "result is 105: " <<field1.Weight(0,0,5,4) << "\n";
+    cout <<"result is 25: " << field1.Weight(4,0,4,4) << "\n";
+    
     cout << field1.PathCost() << "\n";
     
-    // Invokes the second constructor as the value passed is a rvalue reference
-    Field field2 = Field({ {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6} });
-    cout << "\nField 2 \n";
-    cout << field2.Weight(1,2,4,0) << "\n";
-    cout << field2.PathCost() << "\n";
+    Field2 ({{2,2,2},{2,2,2},{2,2,2}});
+    cout << "result is 10: " <<field2.PathCost() << "\n";
     
     return 0;
 
