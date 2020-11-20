@@ -69,10 +69,10 @@ int Field::Weight(int x1, int y1, int x2, int y2)
      if((0 <= x1 < rows) && (0 <= x2 < rows) && (0 <= y1 < cols) && (0 <= y2 < cols))
      {
         //remember the normal coordinate graph is Right to Up, here is Right to down.
-        int rows1 = min(x1, x2);
-        int rows2 = max(x1, x2);
-        int cols1 = min(y1, y2);
-        int cols2 = max(y1, y2);
+        int rows1 = min(y1, y2);
+        int rows2 = max(y1, y2);
+        int cols1 = min(x1, x2);
+        int cols2 = max(x1, x2);
          
         // Weight(1,1,1,1)=6-2-3+1=2; Weight(1,1,2,2)=18-3-6+1=10
          if(rows1 == 0 && cols1 ==0)
