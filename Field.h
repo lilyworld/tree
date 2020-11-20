@@ -18,9 +18,8 @@ class Field
     int PathCost();
   
   private:
-    int rows, cols;   //numbers of rows and cols
-    std::vector<std::vector<int>> matirx;   // store the 2-D matirx
-    std::vector<std::vector<int>> precompSum;  // store the precomputing sum
+    std::vector<std::vector<int>> matirx;   // store the 2-D matirx, work for pathcost()
+    std::vector<std::vector<int>> precompSum;  // store the precomputing sum, work for weight()
     
  };
 
