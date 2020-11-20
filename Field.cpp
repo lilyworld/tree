@@ -67,6 +67,7 @@ Field::Field(vector<vector<int>> && element)
  //need to do the precomputing in the constructors
 int Field::Weight(int x1, int y1, int x2, int y2)
 {
+     int weight=0;
      rows = matirx.size();
      cols = matirx[0].size();
      if(x1<0 || x2<0 || y1<0 || y2<0 || x1>=cols || x2>=cols || y1>=rows ||y2>=rows)
@@ -82,15 +83,16 @@ int Field::Weight(int x1, int y1, int x2, int y2)
          
         // Weight(1,1,1,1)=6-2-3+1=2; Weight(1,1,2,2)=18-3-6+1=10
          if(rows1 == 0 && cols1 ==0)
-             return precompSum[rows2][cols2];
+             weight=precompSum[rows2][cols2];
          if(cols1 == 0)
-             return precompSum[rows2][cols2] - precompSum[rows1-1][cols2];
+             weight= precompSum[rows2][cols2] - precompSum[rows1-1][cols2];
          else if(rows1 == 0)
-             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1];
+             weight= precompSum[rows2][cols2] - precompSum[rows2][cols1-1];
          else
-             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
+             weight= precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
      }
     
+    return weight;
      /**else
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
     **/
