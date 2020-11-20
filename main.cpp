@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    /**
     void printMatrix(const vector<vector<int>> &v)
     {
         for(int i = 0; i < v.size(); i++) {
@@ -14,6 +15,7 @@ int main()
             cout << "\n";
         }
     }
+    **/
     
     vector<vector<int>> v(5, vector<int> (6));
     for(int i = 0; i < 5; i++)
@@ -21,7 +23,8 @@ int main()
             v[i][j] = j + 1;
             
     // Prints the 2D vector 
-    printMatrix(v);
+    //printMatrix(v);
+    
     
     // Invokes the first constructor
     Field field1 = Field(v);
