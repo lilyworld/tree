@@ -88,7 +88,7 @@ int Field::Weight(int x1, int y1, int x2, int y2)
              return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
      }
     
-     if(x1<0 || x2<0 || y1<0 || y2<0 || x1>=cols || x2>=cols || y1>=rows ||y2>=rows)
+     else
         throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries
     
 }
