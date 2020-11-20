@@ -30,13 +30,13 @@ int main()
     Field field1 = Field(v);
     cout << "\nField 1 \n";
     cout << field1.Weight(1,2,4,0) << "\n";
-    cout << "out of range: " << field1.Weight(1,6,7,2) << "\n";
     cout << "result is 1: " << field1.Weight(0,0,0,0) << "\n";
     cout << "result is 105: " <<field1.Weight(0,0,5,4) << "\n";
     cout <<"result is 5: " << field1.Weight(4,4,4,4) << "\n";
     cout <<"result is 25: " << field1.Weight(4,0,4,4) << "\n";
     cout <<"result is 24: " << field1.Weight(2,1,0,4) << "\n";
     cout <<"result is 21: " << field1.Weight(0,2,5,2) << "\n";
+    cout << "out of range: " << field1.Weight(1,6,7,2) << "\n";
     cout <<"result is 36: " << field1.Weight(2,2,4,4) << "\n";
     
     cout << field1.PathCost() << "\n";
