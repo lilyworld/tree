@@ -78,9 +78,9 @@ int Field::Weight(int x1, int y1, int x2, int y2)
          if(rows1 == 0 && cols1 ==0)
              return precompSum[rows2][cols2];
          if(cols1 == 0)
-             return precompSum[rows2][cols2] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];
+             return precompSum[rows2][cols2] - precompSum[rows1-1][cols2];
          else if(rows1 == 0)
-             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] + precompSum[rows1-1][cols1-1];
+             return precompSum[rows2][cols2] - precompSum[rows2][cols1-1];
          else
              return precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];         
      }
