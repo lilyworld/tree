@@ -1,26 +1,42 @@
 #include <iostream>
-#include "KeywordsInFile.h"
-#include "KeywordsInFile.cpp"
+#include "Filed.h"
+#include "InFiled.cpp"
 using namespace std;
 
 int main()
 {
-    std::string keyFile = "keyword.txt";
-    std::string txtFile = "text_file.txt";
-    KeywordsInFile file(keyFile, txtFile);
+    void printMatrix(const vector<vector<int>> &v) {
+        for(int i = 0; i < v.size(); i++) {
+            for(int j = 0; j < v[0].size(); j++) {
+                cout << v[i][j] << " ";
+            }
+            cout << "\n";
+    }
+}
 
-    //should return 0
-    std::cout << "KEYWORDFOUND()" << std::endl;
-    std::cout << file.KeywordFound("night") <<std::endl;
+int main()
+{
+    
+    vector<vector<int>> v(5, vector<int> (6));
+    for(int i = 0; i < 5; i++)
+        for(int j = 0; j < 6; j++)
+            v[i][j] = j + 1;
+            
+    // Prints the 2D vector 
+    printMatrix(v);
+    
+    // Invokes the first constructor
+    Field field1 = Field(v);
+    cout << "\nField 1 \n";
+    cout << field1.Weight(1,2,4,0) << "\n";
+    cout << field1.PathCost() << "\n";
+    
+    // Invokes the second constructor as the value passed is a rvalue reference
+    Field field2 = Field({ {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6}, {1,2,3,4,5,6} });
+    cout << "\nField 2 \n";
+    cout << field2.Weight(1,2,4,0) << "\n";
+    cout << field2.PathCost() << "\n";
+    
+    return 0;
 
-    //should return 6
-    std::cout << "TOTALOCCURENCES()" << std::endl;
-    std::cout << file.TotalOccurrences("lazy") << std::endl;
-
-    //should print "keyword:occurences" for each keyword
-    //std::cout << "OS>>" << std::endl;
-    //std::cout << file << std::endl;
-
-    //should print 3 for line 3 (4 in total text file)
-    std::cout << file.KeywordInLine("lol", 3) << std::endl;
 }
