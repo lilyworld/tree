@@ -83,7 +83,7 @@ int Field::Weight(int x1, int y1, int x2, int y2)
         weight = precompSum[rows2][cols2];
         // Weight(1,1,1,1)=6-2-3+1=2; Weight(1,1,2,2)=18-3-6+1=10
          if(x1==x2==y1==y2)
-             weight= matirx[rows2][cols2];
+             weight= matirx[x1][y1];
          else if(rows1 >=1)
              weight= precompSum[rows2][cols2] - precompSum[rows1-1][cols2];
          else if(cols1 >= 1)
