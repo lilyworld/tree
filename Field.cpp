@@ -88,7 +88,10 @@ int Field::Weight(int x1, int y1, int x2, int y2)
      }
     
      else if(x1<0 || x2<0 || y1<0 || y2<0 || x1>=cols || x2>=cols || y1>=rows ||y2>=rows)
+     {
          throw out_of_range("Index is out of range");  // do if coordinates go beyond the array boundaries   
+         return 0;
+     }
 }
 
 //This method computes the cost of the cheapest path from top-left corner of the field to the bottom-right corner.
