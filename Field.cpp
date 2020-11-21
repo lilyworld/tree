@@ -81,13 +81,12 @@ int Field::Weight(int x1, int y1, int x2, int y2)
         int cols1 = min(x1, x2);
         int cols2 = max(x1, x2);
         // Weight(1,1,1,1)=6-2-3+1=2; Weight(1,1,2,2)=18-3-6+1=10
-        if(rows1 == 0 && cols1 ==0)
-            weight = precompSum[rows2][cols2];
+        weight = precompSum[rows2][cols2];
         if(cols1 == 0)
             weight = precompSum[rows2][cols2] - precompSum[rows1-1][cols2];
         else if(rows1 == 0)
             weight = precompSum[rows2][cols2] - precompSum[rows2][cols1-1];
-        else
+        else if(cols1>0 && rows1>0)
             weight = precompSum[rows2][cols2] - precompSum[rows2][cols1-1] - precompSum[rows1-1][cols2] + precompSum[rows1-1][cols1-1];
     }
     
