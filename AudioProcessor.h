@@ -1,7 +1,7 @@
 #ifndef AUDIOPROCESSOR_H
 #define	AUDIOPROCESSOR_H
 #include <iostream>
-#incldue <vector>
+#include <vector>
 
 class AudioProcessor
 {
