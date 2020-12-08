@@ -70,8 +70,7 @@ vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, sh
 
 vector<short> AudioProcessor::StretchTwice(const std::vector<short>& audio)
 {
-  if(audio.size()==0) return 0;
-  if(audio.size()==1) return audio[0];
+  if(audio.size()<2) return audio;
   //store the original data, and calculated data
   vector<short> memo;
   for(int i=0; i<audio.size()-1; i++)
