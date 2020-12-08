@@ -5,7 +5,7 @@
 
 class AudioProcessor
 {
-  pubilc:
+  public:
     /**@@returns the compressed version of the given audio. **/
     //“Compressed” means that any number from audio that is larger than threshold or smaller
     // than -threshold has it’s “above the threshold” portion reduced rate time.
@@ -24,7 +24,7 @@ class AudioProcessor
   
   private:
     float numsamp;  //numbers/samples.
-    vector<short> CompAudio; //use to store new values.
+    std::vector<short> CompAudio; //use to store new values.
   
 };
 
