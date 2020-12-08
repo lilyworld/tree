@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include"AudioProcessor.h"
-#inclue"AudioProcessor.cpp"
+#include"AudioProcessor.cpp"
 
 void TestCompress()
 {
