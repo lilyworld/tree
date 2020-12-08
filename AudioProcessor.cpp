@@ -5,7 +5,7 @@
 
 using namespace std;
 
-AudioProcessor::vector<short> Compress(const std::vector<short>& audio, short threshold, float rate)
+vector<short> AudioProcessor::Compress(const std::vector<short>& audio, short threshold, float rate)
 {
   if(threshold < 0 || rate < 1.0)
       throw invalid_argument("Invalid value.")
@@ -37,7 +37,7 @@ AudioProcessor::vector<short> Compress(const std::vector<short>& audio, short th
  
 }
                   
-AudioProcessor::vector<short> CutOutSilence(const std::vector<short> & audio, short level, int silenceLength)
+vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, short level, int silenceLength)
 {
   if(level<0 || silenceLength<1)
       throw invalid_argument("Invalid value of level or silenceLength.");
@@ -52,7 +52,7 @@ AudioProcessor::vector<short> CutOutSilence(const std::vector<short> & audio, sh
   return CompAudio;
 }
 
-AudioProcessor::vector<short> StretchTwice(const std::vector<short>& audio)
+vector<short> AudioProcessor::StretchTwice(const std::vector<short>& audio)
 {
   //store the original data, and calculated data
   vector<short> memo;
@@ -69,7 +69,7 @@ AudioProcessor::vector<short> StretchTwice(const std::vector<short>& audio)
 }
   
   
-AudioProcessor::vector<short> Normalize(const std::vector<short>& audio, short normalizeTarget)
+vector<short> AudioProcessor::Normalize(const std::vector<short>& audio, short normalizeTarget)
 {
   if (normalizeTarget<1)
       throw invalid_argument("Invalid normalizeTarget value.");
