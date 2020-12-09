@@ -41,6 +41,7 @@ vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, sh
 {
   if(level<0 || silenceLength<1)
       throw invalid_argument("Invalid value of level or silenceLength.");
+  if(audio.size()==0) return audio;
   int i=0;
   while(i<audio.size())
   {
@@ -60,7 +61,7 @@ vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, sh
          }
          i--;
       }
-      else
+      if(abs(audio[i]>level)
            CompAudio.push_back(audio[i]);
 
       i++;
