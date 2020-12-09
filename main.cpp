@@ -14,6 +14,8 @@ void TestCutOutSilence()
 
     if (output != expected)
         std::cout << "bad CutOutSilence! failed on input 1." << std::endl;
+    else
+        cout << "correct!"<<endl;
 
     // INPUT 2
     input = { 1, 2, 5, 6, -4, 4, 10, 0, -2, -5, -4};
@@ -22,6 +24,8 @@ void TestCutOutSilence()
 
     if (output != expected)
         std::cout << "bad CutOutSilence! failed on input 2." << std::endl;
+     else
+        cout << "correct!"<<endl;
 
     // INPUT 3
     input = { 1, 2, 5, 6, -4, 4, -2, -5, 10, 0, -4 };
@@ -30,6 +34,8 @@ void TestCutOutSilence()
 
     if (output != expected)
         std::cout << "bad CutOutSilence! failed on input 3." << std::endl;
+     else
+        cout << "correct!"<<endl;
 }
 
 int main()
