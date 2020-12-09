@@ -66,6 +66,9 @@ vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, sh
 
       i++;
     }
+  for(auto num:CompAudio)
+      cout<<num<<" ";
+  
   return CompAudio;
 }
 
