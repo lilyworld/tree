@@ -8,6 +8,7 @@ using namespace std;
 vector<short> AudioProcessor::Compress(const std::vector<short>& audio, short threshold, float rate)
 {
   if(audio.size()==0) return audio;
+  vector<short> compAudio; //use to store new values.
   if(threshold < 0 || rate < 1.0)
       throw invalid_argument("Invalid value.");
   else
