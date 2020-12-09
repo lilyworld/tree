@@ -61,11 +61,11 @@ vector<short> AudioProcessor::CutOutSilence(const std::vector<short> & audio, sh
          }
          i--;
       }
-      if(abs(audio[i]>level)
+      if(abs(audio[i])>level)
            CompAudio.push_back(audio[i]);
 
       i++;
-     }
+    }
   return CompAudio;
 }
 
