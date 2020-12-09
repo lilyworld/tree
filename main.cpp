@@ -1,51 +1,26 @@
 #include <iostream>
-#include "Field.h"
-#include "Field.cpp"
+#include "AudioProcessor.h"
+#include "AudioProcessor.cpp"
 using namespace std;
 
 int main()
 {
-    /**
-    void printMatrix(const vector<vector<int>> &v)
+    AudioProcessor  processor;
+
+    vector<short> input{1, 2, 5, 6, -4, 4, -2, -5, 10, 0, -4}; 
+    vector<short> output;  
+    short y=5;
+    int x=4;
+
+    output=processor.CutOutSilence(input, y, x);
+    /**for(int i=0; i<compressedAudio.size(); i++)
     {
-        for(int i = 0; i < v.size(); i++) {
-            for(int j = 0; j < v[0].size(); j++) {
-                cout << v[i][j] << " ";
-            }
-            cout << "\n";
-        }
-    }
-    **/
-    
-    vector<vector<int>> v(5, vector<int> (6));
-    for(int i = 0; i < 5; i++)
-        for(int j = 0; j < 6; j++)
-            v[i][j] = j + 1;
-            
-    // Prints the 2D vector 
-    //printMatrix(v);
-    
-    
-    // Invokes the first constructor
-    Field field1 = Field(v);
-    cout << "\nField 1 \n";
-    
-    cout << "result is 1: " << field1.Weight(0,0,0,0) << "\n";
-    cout << "result is 42: " <<field1.Weight(1,2,4,0) << "\n";
-    cout << "result is 105: " <<field1.Weight(0,0,5,4) << "\n";
-    cout <<"result is 5: " << field1.Weight(4,4,4,4) << "\n";
-    cout <<"result is 25: " << field1.Weight(4,0,4,4) << "\n";
-    cout <<"result is 24: " << field1.Weight(2,1,0,4) << "\n";
-    cout <<"result is 21: " << field1.Weight(0,2,5,2) << "\n";
-    cout <<"result is 36: " << field1.Weight(2,2,4,4) << "\n";
-    //cout << "out of range: " << field1.Weight(1,6,7,2) << "\n";
-    cout <<"result is 36: " << field1.Weight(2,2,4,4) << "\n";
-    
-    cout << field1.PathCost() << "\n";
-    
-    Field field2 ({{2,2,2},{2,2,2},{2,2,2}});
-    cout << "result is 10: " <<field2.PathCost() << "\n";
-    
+        cout << compressedAudio[i]<< ", ";
+    }**/
+    //couinput = { 1, 2, 5, 6, -4, 4, -2, -5, 10, 0, -4 };
+    vector<short> expected = { 1, 2, 5, 6, 10, 0, -4 };
+    if (output != expected)
+        std::cout << "bad CutOutSilence! failed on input 3." << std::endl;
     return 0;
 
 }
