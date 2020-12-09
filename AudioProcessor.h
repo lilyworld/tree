@@ -24,7 +24,7 @@ class AudioProcessor
   
   private:
     float numsamp;  //numbers/samples.
-    std::vector<short> CompAudio; //use to store new values.
+    std::vector<short> compAudio; //use to store new values.
   
 };
 
