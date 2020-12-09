@@ -7,6 +7,7 @@ using namespace std;
 
 vector<short> AudioProcessor::Compress(const std::vector<short>& audio, short threshold, float rate)
 {
+  if(audio.size()==0) return audio;
   if(threshold < 0 || rate < 1.0)
       throw invalid_argument("Invalid value.");
   else
@@ -14,26 +15,26 @@ vector<short> AudioProcessor::Compress(const std::vector<short>& audio, short th
       for(int i=0; i<audio.size(); i++)
       {
          if(audio[i] <= threshold && audio[i] >= (-1)*threshold)
-            CompAudio.push_back(audio[i]);
+            compAudio.push_back(audio[i]);
          else
          {
             if(audio[i] >= 0)
             {
                 numsamp=(audio[i] - threshold)/rate + threshold;
                 short x=round(numsamp);
-                CompAudio.push_back(x);
+                compAudio.push_back(x);
             }
           
             else
             {
                 numsamp=(audio[i] + threshold)/rate - threshold;  // when the value is negative, do oppsite formula
                 short y=round(numsamp);
-                CompAudio.push_back(y);
+                compAudio.push_back(y);
             }          
          }
       }
   }
-  return CompAudio;
+  return compAudio;
  
 }
                   
@@ -89,6 +90,7 @@ vector<short> AudioProcessor::Normalize(const std::vector<short>& audio, short n
 {
   if (normalizeTarget<1)
       throw invalid_argument("Invalid normalizeTarget value.");
+  if(audio.size()==0) return audio;
   
   short max=0;
   for(int i=0; i<audio.size(); i++)
