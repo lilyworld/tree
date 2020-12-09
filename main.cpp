@@ -20,7 +20,7 @@ void TestCutOutSilence()
     // INPUT 2
     vector<short> input2 = { 1, 2, 5, 6, -4, 4, 10, 0, -2, -5, -4};
     vector<short> expected2 = { 6, -4, 4, 10 };
-    output2 = aProc.CutOutSilence(input2, 5, 3);
+    auto output2 = aProc.CutOutSilence(input2, 5, 3);
 
     if (output2 != expected2)
         std::cout << "bad CutOutSilence! failed on input 2." << std::endl;
@@ -30,7 +30,7 @@ void TestCutOutSilence()
     // INPUT 3
     vector<short> input3 = { 1, 2, 5, 6, -4, 4, -2, -5, 10, 0, -4 };
     vector<short> expected3 = { 1, 2, 5, 6, 10, 0, -4 };
-    output3 = aProc.CutOutSilence(input3, 5, 4);
+    auto output3 = aProc.CutOutSilence(input3, 5, 4);
 
     if (output3 != expected3)
         std::cout << "bad CutOutSilence! failed on input 3." << std::endl;
